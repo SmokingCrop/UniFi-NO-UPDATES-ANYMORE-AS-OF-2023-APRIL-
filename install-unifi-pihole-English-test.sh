@@ -16,7 +16,9 @@ sudo apt-get install dirmngr -y;sudo apt-key adv --recv-key --keyserver keyserve
 echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' | sudo tee --append /etc/apt/sources.list
 echo 'deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' | sudo tee --append /etc/apt/sources.list
 sudo apt-get update
-echo oracle-java8-installer shared/accepted-oracle-licence-v1-1 boolean true | sudo /usr/bin/debconf-set-selections
+echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
+echo "debconf shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
+echo "debconf shared/accepted-oracle-license-v1-1 seen true" | sudo debconf-set-selections
 sudo apt-get install oracle-java8-installer -y
 echo -e "${Colour}\n\nThe UniFi controller will be installed now.\n\n${less}"
 sudo dpkg -i unifi_$version\_sysvinit_all.deb; sudo apt-get install -f -y
