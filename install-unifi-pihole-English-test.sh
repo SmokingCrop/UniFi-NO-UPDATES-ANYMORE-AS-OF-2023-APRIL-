@@ -11,8 +11,13 @@ echo -e "${Colour}\n\nThe system will now upgrade all the software and firmware,
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove && sudo apt-get autoclean
 echo -e "${Colour}\n\nThe UniFi controller with version $version is downloading now.\n\n${less}"
 wget http://dl.ubnt.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_sysvinit_all.deb
-echo -e "${Colour}\n\nBefore installing the UniFi Controller, it will first install Oracle java 8.\n\n${less}"
-sudo apt-get -y install oracle-java8-jdk
+echo -e "${Colour}\n\nBefore installing the UniFi Controller, it will first install the latest version of Oracle java 8.\n\n${less}"
+sudo apt-get install dirmngr -y;sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com EEA14886
+echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' | sudo tee --append /etc/apt/sources.list
+echo 'deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' | sudo tee --append /etc/apt/sources.list
+sudo apt-get update
+echo oracle-java8-installer shared/accepted-oracle-licence-v1-1 boolean true | sudo /usr/bin/debconf-set-selections
+sudo apt-get install oracle-java8-installer -y
 echo -e "${Colour}\n\nThe UniFi controller will be installed now.\n\n${less}"
 sudo dpkg -i unifi_$version\_sysvinit_all.deb; sudo apt-get install -f -y
 echo -e "${Colour}\n\nPi-hole will be installed now.\nThe initial configuration is interactive.\n\n${less}"
