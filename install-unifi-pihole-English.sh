@@ -5,7 +5,7 @@ less='\033[0m'
 
 echo -e "${Colour}By using this script, you'll adjust the password, update the system, install the stable UniFi controller of your choice and install Pi-hole.\nUse CTRL+C to cancel the script\n\nEnter the Stable UniFi version of your choice (E.g: 5.10.12):${less}"
 read version
-echo -e "${Colour}\nChange your password:\nThe current password is raspberry\n${less}"
+echo -e "${Colour}\nChange your password:\nThe current password is raspberry\nYou can press enter to skip changing your password.\n${less}"
 passwd
 echo -e "${Colour}\n\nThe system will now upgrade all the software and firmware, as well as clean up old/unused packages.\n\n${less}"
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove && sudo apt-get autoclean
