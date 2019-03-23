@@ -19,15 +19,11 @@ sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove && sud
 echo -e "${Colour}\n\nThe UniFi controller with version $version is downloading now.\n\n${less}"
 wget http://dl.ubnt.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_sysvinit_all.deb
 
-echo -e "${Colour}\n\nBefore installing the UniFi Controller, it will first install the latest version of Oracle java 8.\n\n${less}"
-sudo apt-get install dirmngr -y;sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com EEA14886
-echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' | sudo tee --append /etc/apt/sources.list
-echo 'deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' | sudo tee --append /etc/apt/sources.list
-sudo apt-get update
-echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
-echo "debconf shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
-echo "debconf shared/accepted-oracle-license-v1-1 seen true" | sudo debconf-set-selections
-sudo apt-get install oracle-java8-installer -y
+echo -e "${Colour}\n\nBefore installing the UniFi Controller, it will first install OpenJDK 8.\n\n${less}"
+sudo apt-get install openjdk-8-jre-headless -y
+
+echo -e "${Colour}\n\nIn order to fix an issue which can cause a slow start for the UniFi controller, haveged is installed.\n\n${less}"
+sudo apt-get install haveged -y
 
 echo -e "${Colour}\n\nThe UniFi controller will be installed now.\n\n${less}"
 sudo dpkg -i unifi_$version\_sysvinit_all.deb; sudo apt-get install -f -y
