@@ -22,6 +22,9 @@ wget http://dl.ubnt.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\
 echo -e "${Colour}\n\nBefore installing the UniFi Controller, it will first install the latest version of OpenJDK 8.\n\n${less}"
 sudo apt-get install openjdk-8-jre-headless -y
 
+echo -e "${Colour}\n\nIn order to fix an issue which can cause a slow start for the UniFi controller, haveged is installed.\n\n${less}"
+sudo apt-get install haveged -y
+
 echo -e "${Colour}\n\nThe UniFi controller will be installed now.\n\n${less}"
 sudo dpkg -i unifi_$version\_sysvinit_all.deb; sudo apt-get install -f -y
 
