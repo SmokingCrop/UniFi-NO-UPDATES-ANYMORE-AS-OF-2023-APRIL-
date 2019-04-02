@@ -28,8 +28,10 @@ sudo apt-get install haveged -y
 echo -e "${Kleur}\n\nDe UniFi controller wordt nu geïnstalleerd.\n\n${loos}"
 sudo dpkg -i unifi_$version\_sysvinit_all.deb; sudo apt-get install -f -y
 
+if [[ -z "$1" ]] ; then
 echo -e "${Kleur}\n\nPi-hole wordt nu geïnstalleerd.\nVoer de nodige configuratie stappen uit wanneer hier om gevraagd wordt.\n\n${loos}"
 curl -sSL https://install.pi-hole.net | bash
 
 echo -e "${Kleur}\n\nNu juist nog het wachtwoord aanpassen van de web interface van Pi-hole.\n\n${loos}"
 pihole -a -p
+fi
