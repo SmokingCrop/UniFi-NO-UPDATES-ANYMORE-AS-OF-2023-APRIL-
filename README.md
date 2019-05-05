@@ -191,7 +191,7 @@ Remainder of guide is re-created in Markdown by [@ChadBailey](https://github.com
 
 > Not required if you chose [Option 1: Use script to save time](#script)
 
-## Method A (Recommended): Install using .deb file from website
+## <a name="method-a"></a>Method A (Recommended): Install using .deb file from website
 
 > This method manually installs the Controller by using the download link on the website/update blog.
 > 
@@ -223,36 +223,6 @@ Remainder of guide is re-created in Markdown by [@ChadBailey](https://github.com
     ```
     sudo dpkg -i unifi_sysvinit_all.deb; sudo apt-get install -f -y
     ```
-
-## Method A Updating (Not needed during initial installation)
-
-### Method A Using script to update
-
-> Here is a simple script for updating your system, Controller and Pihole in one go.
-> Simply enter ./update.sh in the future to use the script again without having to redownload it.
-
-1. Right click [this link](update-unifi-pihole-English.sh) and copy the URL location.
-
-2. Run this command, replacing the url with the one gotten from step 1.
-
-    ```
-    wget "[link from step 1]" -O update.sh && chmod +x update.sh && ./update.sh
-    ```
-
-### Method A Manually Updating
-
-1. Remove the old downloaded UniFi Controller package
-
-    ```
-    rm unifi_sysvinit_all.deb
-    ```
-
-2. Download the new UniFi Controller package, adjust the link below for the version you want to install.
-
-    ```
-    wget http://dl.ubnt.com/unifi/x.x.xx/unifi_sysvinit_all.deb
-    ```
-
 
 ## Method B (Not Recommended): Add ubiquiti to apt
 
@@ -317,16 +287,78 @@ Remainder of guide is re-created in Markdown by [@ChadBailey](https://github.com
    ```
 
 
-# Visit/Configure newly-installed UniFi Controller
+
+# Accessing UniFi Controller/Pi-hole for Configuration
 
 1. Visit your UniFi Controller in your browser using the [IP address](#ip) and default UniFi Controller port (8443). Example: `https://192.168.1.2:8443`
 
-    a. You will receive a security warning from your well-meaning browser. You will need to expand your options and tell your browser to proceed anyway. You will be warned about this being not recommended or unsafe.
-    
-    > NOTE: This is due to the security certificate being self-signed. To a computer this looks like a forged signature so this is why you get this warning. Since this is a locally-hosted server, a self-signed certificate is used.
+2. Visit your Pi-hole (if installed) in your browser using the Raspberry Pi's IP address with no port specified. Example `http://192.168.1.2/admin`.
 
-2. It is recommended to set a reserved IP for Raspberry Pi in the UniFi Controller's interface
+    > No port assumes the default http port 80.
 
-3. If you would like to configure the controller from the Internet/outside of your local network, you will need to enable port forwarding.
+> NOTE: You will receive a security warning from your well-meaning browser. You will need to expand your options and tell your browser to proceed anyway. You will be warned about this being not recommended or unsafe.
+> This is due to the security certificate being self-signed. To a computer this looks like a forged signature so this is why you get this warning. Since this is a locally-hosted server, a self-signed certificate is used.
 
-    > TODO: Add additional steps/details for for steps 2 and 3
+3. It is recommended to set a reserved IP for Raspberry Pi in the UniFi Controller's interface
+
+4. If you would like to configure the controller from the Internet/outside of your local network, you will need to enable port forwarding.
+
+    > Most ISP's (Internet Service Providers) block this port externally so forwarding it may not work. Even if forwarding port 80 works it is strongly advised against. Further explanation is beyond the scope of this guide, but you have been warned.
+
+> TODO: Add additional steps/details for steps 3 and 4
+
+# Updating
+
+> Updating is not necessary during initial install as everything will be on the latest version by default.
+
+## Method A
+
+> Follow these steps if you followed Method A earlier in this guide.
+
+### Method A: Updating With Script
+
+> Here is a simple script for updating your system, Controller and Pihole in one go.
+> Simply enter ./update.sh in the future to use the script again without having to redownload it.
+
+1. Right click [this link](update-unifi-pihole-English.sh) and copy the URL location.
+
+2. Run this command, replacing the url with the one gotten from step 1.
+
+    ```
+    wget "[link from step 1]" -O update.sh && chmod +x update.sh && ./update.sh
+    ```
+
+### Method A: Updating Manually
+
+1. Remove the old downloaded UniFi Controller package
+
+    ```
+    rm unifi_sysvinit_all.deb
+    ```
+
+2. Download the new UniFi Controller package, adjust the link below for the version you want to install.
+
+    ```
+    wget http://dl.ubnt.com/unifi/x.x.xx/unifi_sysvinit_all.deb
+    ```
+
+## Method B: Updating using apt
+
+> Follow this step if you followed Method B earlier in this guide.
+
+> Updating is easy but it may not be available right away, in that case, you will need to wait a few days longer before you can update (usually about a week after they have released the blog).
+
+1. Simply execute the following commands. This will also upgrade your other programs.
+
+    ```
+    sudo apt-get update; sudo apt-get upgrade -y
+    ```
+
+
+## Updating Pi-hole
+
+1. Issue the following command
+
+    ```
+    pihole -up
+    ```
