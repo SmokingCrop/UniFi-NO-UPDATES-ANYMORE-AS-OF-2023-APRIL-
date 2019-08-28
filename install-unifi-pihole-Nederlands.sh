@@ -4,10 +4,10 @@ Kleur='\033[1;31m'
 loos='\033[0m'
 
 echo -e "${Kleur}Met dit script passen we het wachtwoord aan, wordt het systeem up-to-date gebracht, installeren we de UniFi controller met versie van jouw keuze en wordt Pi-hole geïnstalleerd.\nDruk op CTRL+C om het script te stoppen.\n${loos}"
-read -p "Typ de gewenste Stabiele UniFi Controller versie (bijv. 5.9.29) of druk op ENTER voor versie 5.10.26: " version
+read -p "Typ de gewenste Stabiele UniFi Controller versie (bijv. 5.9.29) of druk op ENTER voor versie 5.11.39: " version
 
 if [[ -z "$version" ]]; then
-	version='5.10.26'
+	version='5.11.39'
 fi
 
 echo -e "${Kleur}\nVerander je wachtwoord:\nHet standaard wachtwoord is raspberry\nJe kan op enter drukken om dit over te slaan\n${loos}"
