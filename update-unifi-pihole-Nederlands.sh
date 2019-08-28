@@ -4,10 +4,10 @@ Kleur='\033[1;31m'
 loos='\033[0m'
 
 echo -e "${Kleur}Met dit script wordt je systeem, de UniFi Controller en Pi-hole upgedatet.\n${loos}"
-read -p "Typ de gewenste Stabiele UniFi Controller versie (bijv. 5.9.29) of druk op ENTER voor versie 5.10.26: " version
+read -p "Typ de gewenste Stabiele UniFi Controller versie (bijv. 5.9.29) of druk op ENTER voor versie 5.11.39: " version
 
 if [[ -z "$version" ]]; then
-	version='5.10.26'
+	version='5.11.39'
 fi
 
 echo -e "${Kleur}\n\nNu wordt het systeem up-to-date gebracht en worden de oude en niet gebruikte packages verwijderd.\n\n${loos}"
