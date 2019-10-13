@@ -9,7 +9,7 @@ read -p "Typ de gewenste Stabiele UniFi Controller versie (bijv. 5.9.29) of druk
 if [[ -z "$version" ]]; then
 	version='5.11.50'
 fi
-
+ 
 echo -e "${Kleur}\nVerander je wachtwoord:\nHet standaard wachtwoord is raspberry\nJe kan op enter drukken om dit over te slaan\n${loos}"
 passwd
 
