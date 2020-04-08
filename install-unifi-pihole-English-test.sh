@@ -15,8 +15,8 @@ echo -e "${Colour}\n\nThe UniFi controller (version $version) will now be downlo
 wget http://dl.ubnt.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_sysvinit_all.deb
 echo -e "${Colour}\n\nThe UniFi controller will now be upgraded.\n\n${less}"
 sudo dpkg -i unifi_$version\_sysvinit_all.deb
-echo -e "${Colour}\n\nPi-hole will now be upgraded.\n\n${less}"
 
 if hash pihole 2>/dev/null; then
+	echo -e "${Colour}\n\nPi-hole will now be upgraded.\n\n${less}"
         pihole -up
 fi
