@@ -16,5 +16,8 @@ echo -e "${Kleur}\n\nDe UniFi Controller met versie $version wordt gedownload.\n
 wget http://dl.ubnt.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_sysvinit_all.deb
 echo -e "${Kleur}\n\nDe UniFi controller wordt nu geupdatet.\n\n${loos}"
 sudo dpkg -i unifi_$version\_sysvinit_all.deb
-echo -e "${Kleur}\n\nPi-hole wordt nu geupdatet.\n\n${loos}"
-pihole -up
+
+if hash pihole 2>/dev/null; then
+	echo -e "${Kleur}\n\nPi-hole wordt nu geupdatet.\n\n${loos}"
+        pihole -up
+fi
