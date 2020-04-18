@@ -17,7 +17,7 @@ echo -e "${Kleur}\n\nNu wordt het systeem up-to-date gebracht en worden de oude 
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove && sudo apt-get autoclean
 
 echo -e "${Kleur}\n\nNu wordt de UniFi Controller met versie $version gedownload.\n\n${loos}"
-wget http://dl.ubnt.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_sysvinit_all.deb
+wget http://dl.ui.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_sysvinit_all.deb
 
 echo -e "${Colour}\n\nVooraleer de UniFi controller geïnstalleerd wordt, dient Java (OpenJDK 8) geïnstalleerd te worden.\n\n${less}"
 sudo apt-get install openjdk-8-jre-headless -y
