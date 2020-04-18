@@ -4,7 +4,7 @@ Colour='\033[1;31m'
 less='\033[0m'
 
 echo -e "${Colour}By using this script, you'll adjust the password, update the system, install the stable UniFi controller of your choice and install Pi-hole.\nUse CTRL+C to cancel the script\n\n${less}"
-read -p "Please enter the STABLE version (e.g: 5.9.29) or press enter for version 5.12.66: " version
+read -p "Please enter a STABLE version (e.g: 5.9.29) or press enter for version 5.12.66: " version
 
 if [[ -z "$version" ]]; then
 	version='5.12.66'
@@ -17,7 +17,7 @@ echo -e "${Colour}\n\nThe system will now upgrade all the software and firmware,
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove && sudo apt-get autoclean
 
 echo -e "${Colour}\n\nThe UniFi controller with version $version is downloading now.\n\n${less}"
-wget http://dl.ubnt.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_sysvinit_all.deb
+wget http://dl.ui.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_sysvinit_all.deb
 
 echo -e "${Colour}\n\nBefore installing the UniFi Controller, it will first install OpenJDK 8.\n\n${less}"
 sudo apt-get install openjdk-8-jre-headless -y
