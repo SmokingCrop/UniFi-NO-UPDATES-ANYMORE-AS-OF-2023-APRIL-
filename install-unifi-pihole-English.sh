@@ -14,7 +14,7 @@ echo -e "${Colour}\nChange your password:\nThe current password is raspberry\n\n
 passwd
 
 echo -e "${Colour}\n\nThe system will now upgrade all the software and firmware, as well as clean up old/unused packages.\n\n${less}"
-sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove && sudo apt-get autoclean
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y && sudo apt-get autoclean -y
 
 echo -e "${Colour}\n\nThe UniFi controller with version $version is downloading now.\n\n${less}"
 wget http://dl.ui.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_sysvinit_all.deb
