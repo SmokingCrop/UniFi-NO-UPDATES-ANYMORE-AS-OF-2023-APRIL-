@@ -35,3 +35,4 @@ curl -sSL https://install.pi-hole.net | bash
 echo -e "${Kleur}\n\nNu juist nog het wachtwoord aanpassen van de web interface van Pi-hole.\n\n${loos}"
 pihole -a -p
 fi
+ 
