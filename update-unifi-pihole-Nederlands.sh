@@ -7,7 +7,7 @@ echo -e "${Kleur}Met dit script wordt je systeem, de UniFi Controller en Pi-hole
 read -p "Typ de gewenste Stabiele UniFi Controller versie (bijv. 5.11.50) of druk op ENTER voor versie 6.0.28: " version
 
 if [[ -z "$version" ]]; then
-	version='6.0.28'
+	version='6.0.36'
 fi
 
 echo -e "${Kleur}\n\nNu wordt het systeem up-to-date gebracht en worden de oude en niet gebruikte packages verwijderd.\n\n${loos}"
