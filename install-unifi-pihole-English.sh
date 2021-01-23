@@ -10,7 +10,7 @@ if [[ -z "$version" ]]; then
 	version='6.0.43'
 fi
 
-echo -e "${Colour}\nChange your password:\nThe current password is raspberry\n\nYou can press enter if you don't want to enter a new password\n${less}"
+echo -e "${Colour}\nChange your default password:\nThe default password for the user pi is raspberry\n\nYou can press enter if you don't want to update your password\n${less}"
 passwd
 
 echo -e "${Colour}\n\nThe system will now upgrade all the software and firmware, as well as clean up old/unused packages.\n\n${less}"
