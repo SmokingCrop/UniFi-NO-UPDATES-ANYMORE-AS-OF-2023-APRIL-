@@ -14,19 +14,19 @@ echo -e "${Kleur}\nVerander je wachtwoord:\nHet standaard wachtwoord is raspberr
 passwd
 
 echo -e "${Kleur}\n\nNu wordt het systeem up-to-date gebracht en worden de oude en niet gebruikte packages verwijderd.\n\n${loos}"
-sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y && sudo apt-get autoclean -y
+sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt-get autoclean -y
 
 echo -e "${Kleur}\n\nNu wordt de UniFi Controller met versie $version gedownload.\n\n${loos}"
 wget http://dl.ui.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_sysvinit_all.deb
 
 echo -e "${Colour}\n\nVooraleer de UniFi controller geïnstalleerd wordt, dient Java (OpenJDK 8) geïnstalleerd te worden.\n\n${less}"
-sudo apt-get install openjdk-8-jre-headless -y
+sudo apt install openjdk-8-jre-headless -y
 
 echo -e "${Colour}\n\nOm een oplossing te bieden voor de trage opstart van de UniFi controller door een specifiek probleem, wordt haveged geïnstalleerd.\n\n${less}"
-sudo apt-get install haveged -y
+sudo apt install haveged -y
 
 echo -e "${Kleur}\n\nDe UniFi controller wordt nu geïnstalleerd.\n\n${loos}"
-sudo dpkg -i unifi_$version\_sysvinit_all.deb; sudo apt-get install -f -y
+sudo dpkg -i unifi_$version\_sysvinit_all.deb; sudo apt install -f -y
 
 if [[ -z "$1" ]] ; then
 echo -e "${Kleur}\n\nPi-hole wordt nu geïnstalleerd.\nVoer de nodige configuratie stappen uit wanneer hier om gevraagd wordt.\n\n${loos}"
