@@ -14,19 +14,19 @@ echo -e "${Colour}\nChange your default password:\nThe default password for the 
 passwd
 
 echo -e "${Colour}\n\nThe system will now upgrade all the software and firmware, as well as clean up old/unused packages.\n\n${less}"
-sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y && sudo apt-get autoclean -y
+sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt-get autoclean -y
 
 echo -e "${Colour}\n\nThe UniFi controller with version $version is downloading now.\n\n${less}"
 wget http://dl.ui.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_sysvinit_all.deb
 
 echo -e "${Colour}\n\nBefore installing the UniFi Controller, it will first install OpenJDK 8.\n\n${less}"
-sudo apt-get install openjdk-8-jre-headless -y
+sudo apt install openjdk-8-jre-headless -y
 
 echo -e "${Colour}\n\nIn order to fix an issue which can cause a slow start for the UniFi controller, haveged is installed.\n\n${less}"
-sudo apt-get install haveged -y
+sudo apt install haveged -y
 
 echo -e "${Colour}\n\nThe UniFi controller will be installed now.\n\n${less}"
-sudo dpkg -i unifi_$version\_sysvinit_all.deb; sudo apt-get install -f -y
+sudo dpkg -i unifi_$version\_sysvinit_all.deb; sudo apt install -f -y
 
 if [[ -z "$1" ]] ; then
 echo -e "${Colour}\n\nPi-hole will be installed now.\nThe initial configuration is interactive.\n\n${less}"
