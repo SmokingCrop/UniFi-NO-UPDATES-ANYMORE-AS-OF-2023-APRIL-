@@ -4,10 +4,10 @@ Colour='\033[1;31m'
 less='\033[0m'
 
 echo -e "${Colour}By using this script, you'll adjust the password, update the system, install the stable UniFi controller of your choice and install Pi-hole.\nUse CTRL+C to cancel the script\n\n${less}"
-read -p "Please enter a STABLE version (e.g: 6.0.43) or press enter for version 6.1.71: " version
+read -p "Please enter a STABLE version (e.g: 6.0.43) or press enter for version 6.2.26: " version
 
 if [[ -z "$version" ]]; then
-	version='6.1.71'
+	version='6.2.26'
 fi
 
 echo -e "${Colour}\nChange your default password:\nThe default password for the user pi is raspberry\n\nYou can press enter if you don't want to update your password\n${less}"
