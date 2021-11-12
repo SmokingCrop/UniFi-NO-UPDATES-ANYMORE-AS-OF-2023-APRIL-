@@ -38,3 +38,7 @@ curl -sSL https://install.pi-hole.net | bash
 echo -e "${Colour}\n\nOne more step is changing the password for the web interface of the Pi-hole.\n\n${less}"
 pihole -a -p
 fi
+
+echo -e "${Colour}\n\nTo finish the installation, a reboot is required. Starting a reboot in 3 seconds.\n\n${less}"
+sleep 3
+sudo reboot now
