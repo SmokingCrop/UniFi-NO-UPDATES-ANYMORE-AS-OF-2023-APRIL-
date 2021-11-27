@@ -4,10 +4,10 @@ Kleur='\033[1;31m'
 loos='\033[0m'
 
 echo -e "${Kleur}Met dit script passen we het wachtwoord aan, wordt het systeem up-to-date gebracht, installeren we de UniFi controller met versie van jouw keuze en wordt Pi-hole geïnstalleerd.\nDruk op CTRL+C om het script te stoppen.\n${loos}"
-read -p "Typ de gewenste Stabiele UniFi Controller versie (bijv. 6.0.43) of druk op ENTER voor versie 6.4.54: " version
+read -p "Typ de gewenste Stabiele UniFi Controller versie (bijv. 6.0.43) of druk op ENTER voor versie 6.5.53: " version
 
 if [[ -z "$version" ]]; then
-	version='6.4.54'
+	version='6.5.53'
 fi
  
 echo -e "${Kleur}\nVerander je wachtwoord:\nHet standaard wachtwoord is raspberry\nJe kan op enter drukken om dit over te slaan\n${loos}"
@@ -27,6 +27,9 @@ sudo apt install openjdk-8-jre-headloos jsvc libcommons-daemon-java -y
 
 echo -e "${Kleur}\n\nOm een oplossing te bieden voor de trage opstart van de UniFi controller door een specifiek probleem, wordt haveged geïnstalleerd.\n\n${loos}"
 sudo apt install haveged -y
+
+echo -e "${Kleur}\n\nMongoDB wordt nu geïnstalleerd, omdat het nodig is voor de UniFi controller.\n\n${loos}"
+sudo apt install mongodb-server mongodb-clients -y
 
 echo -e "${Kleur}\n\nDe UniFi controller wordt nu geïnstalleerd.\n\n${loos}"
 sudo dpkg -i unifi_$version\_sysvinit_all.deb; sudo apt install -f -y
