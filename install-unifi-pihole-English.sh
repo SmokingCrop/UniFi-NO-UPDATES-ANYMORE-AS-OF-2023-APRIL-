@@ -4,10 +4,10 @@ Colour='\033[1;31m'
 less='\033[0m'
 
 echo -e "${Colour}By using this script, you'll adjust the password, update the system, install the stable UniFi controller of your choice and install Pi-hole.\nUse CTRL+C to cancel the script\n\n${less}"
-read -p "Please enter a STABLE version (e.g: 6.0.43) or press enter for version 6.4.54: " version
+read -p "Please enter a STABLE version (e.g: 6.0.43) or press enter for version 6.5.53: " version
 
 if [[ -z "$version" ]]; then
-	version='6.4.54'
+	version='6.5.53'
 fi
 
 echo -e "${Colour}\nChange your default password:\nThe default password for the user pi is raspberry\n\nYou can press enter if you don't want to update your password\n${less}"
@@ -27,6 +27,9 @@ sudo apt install openjdk-8-jre-headless jsvc libcommons-daemon-java -y
 
 echo -e "${Colour}\n\nIn order to fix an issue which can cause a slow start for the UniFi controller, haveged is installed.\n\n${less}"
 sudo apt install haveged -y
+
+echo -e "${Colour}\n\nMongoDB will now be installed as it's a dependency of UniFi.\n\n${less}"
+sudo apt install mongodb-server mongodb-clients -y
 
 echo -e "${Colour}\n\nThe UniFi controller will be installed now.\n\n${less}"
 sudo dpkg -i unifi_$version\_sysvinit_all.deb; sudo apt install -f -y
