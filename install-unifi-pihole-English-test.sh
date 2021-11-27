@@ -28,6 +28,9 @@ sudo apt install openjdk-8-jre-headless jsvc libcommons-daemon-java -y
 echo -e "${Colour}\n\nIn order to fix an issue which can cause a slow start for the UniFi controller, haveged is installed.\n\n${less}"
 sudo apt install haveged -y
 
+echo -e "${Colour}\n\nMongoDB will now be installed as it's a dependency of UniFi.\n\n${less}"
+sudo apt install mongodb-server mongodb-clients -y
+
 echo -e "${Colour}\n\nThe UniFi controller will be installed now.\n\n${less}"
 sudo dpkg -i unifi_$version\_sysvinit_all.deb; sudo apt install -f -y
 
@@ -41,4 +44,5 @@ fi
 
 echo -e "${Colour}\n\nTo finish the installation, a reboot is required. Starting a reboot in 3 seconds.\n\n${less}"
 sleep 3
+echo -e "${Colour}\nRestarting the Raspberry Pi now.\n${less}"
 sudo reboot now
