@@ -3,15 +3,12 @@
 Kleur='\033[1;31m'
 loos='\033[0m'
 
-echo -e "${Kleur}Met dit script passen we het wachtwoord aan, wordt het systeem up-to-date gebracht, installeren we de UniFi controller met versie van jouw keuze en wordt Pi-hole geïnstalleerd.\nDruk op CTRL+C om het script te stoppen.\n${loos}"
+echo -e "${Kleur}Met dit script wordt het systeem up-to-date gebracht, installeren we de UniFi controller met versie van jouw keuze en wordt Pi-hole geïnstalleerd.\nDruk op CTRL+C om het script te stoppen.\n${loos}"
 read -p "Typ de gewenste Stabiele UniFi Controller versie (bijv. 6.5.55) of druk op ENTER voor versie 7.0.25: " version
 
 if [[ -z "$version" ]]; then
 	version='7.0.25'
 fi
- 
-echo -e "${Kleur}\nVerander je wachtwoord:\nHet standaard wachtwoord is raspberry\nJe kan op enter drukken om dit over te slaan\n${loos}"
-passwd
 
 echo -e "${Kleur}\n\nDe Raspbian Stretch sources.list wordt toegevoegd voor compatabiliteit met MongoDB.\n\n${loos}"
 echo 'deb http://archive.raspbian.org/raspbian stretch main contrib non-free rpi' | sudo tee /etc/apt/sources.list.d/raspbian_stretch_for_mongodb.list
