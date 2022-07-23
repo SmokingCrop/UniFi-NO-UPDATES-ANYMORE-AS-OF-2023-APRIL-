@@ -22,9 +22,6 @@ wget http://dl.ui.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_s
 echo -e "${Kleur}\n\nVooraleer de UniFi controller geïnstalleerd wordt, dient Java (OpenJDK 8), jsvc en libcommons-daemon-java geïnstalleerd te worden.\n\n${loos}"
 sudo apt install openjdk-8-jre-headloos jsvc libcommons-daemon-java -y
 
-echo -e "${Kleur}\n\nOm een oplossing te bieden voor de trage opstart van de UniFi controller door een specifiek probleem, wordt haveged geïnstalleerd.\n\n${loos}"
-sudo apt install haveged -y
-
 echo -e "${Kleur}\n\nMongoDB wordt nu geïnstalleerd, omdat het nodig is voor de UniFi controller.\n\n${loos}"
 sudo apt install mongodb-server mongodb-clients -y
 
