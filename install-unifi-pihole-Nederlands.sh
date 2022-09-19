@@ -4,10 +4,10 @@ Kleur='\033[1;31m'
 loos='\033[0m'
 
 echo -e "${Kleur}Met dit script wordt het systeem up-to-date gebracht, installeren we de UniFi controller met versie van jouw keuze en wordt Pi-hole geïnstalleerd.\nDruk op CTRL+C om het script te stoppen.\n${loos}"
-read -p "Typ de gewenste Stabiele UniFi Controller versie (bijv. 7.1.66) of druk op ENTER voor versie 7.2.92: " version
+read -p "Typ de gewenste Stabiele UniFi Controller versie (bijv. 7.1.66) of druk op ENTER voor versie 7.2.94: " version
 
 if [[ -z "$version" ]]; then
-	version='7.2.92'
+	version='7.2.94'
 fi
 
 echo -e "${Kleur}\n\nDe Raspbian Stretch sources.list wordt toegevoegd voor compatabiliteit met MongoDB.\n\n${loos}"
