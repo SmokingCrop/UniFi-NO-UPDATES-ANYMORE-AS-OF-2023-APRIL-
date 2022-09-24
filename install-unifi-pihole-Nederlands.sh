@@ -17,7 +17,7 @@ echo -e "${Kleur}\n\nNu wordt het systeem up-to-date gebracht en worden de oude 
 sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt-get autoclean -y
 
 echo -e "${Kleur}\n\nNu wordt de UniFi Controller met versie $version gedownload.\n\n${loos}"
-wget http://dl.ui.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_sysvinit_all.deb
+wget https://dl.ui.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_sysvinit_all.deb
 
 echo -e "${Kleur}\n\nVooraleer de UniFi controller geïnstalleerd wordt, dient Java (OpenJDK 8), jsvc en libcommons-daemon-java geïnstalleerd te worden.\n\n${loos}"
 sudo apt install openjdk-8-jre-headless jsvc libcommons-daemon-java -y
