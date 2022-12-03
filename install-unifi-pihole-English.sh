@@ -2,12 +2,13 @@
 
 Colour='\033[1;31m'
 less='\033[0m'
+requiredver='7.3.76'
 
 echo -e "${Colour}By using this script, you'll update the system, install the stable UniFi controller of your choice and install Pi-hole.\nUse CTRL+C to cancel the script\n\n${less}"
-read -p "Please enter a STABLE version (e.g: 7.1.66) or press enter for version 7.2.95: " version
+read -p "Please enter a STABLE version (e.g: 7.2.95) or press enter for version 7.3.76: " version
 
 if [[ -z "$version" ]]; then
-	version='7.2.95'
+	version='7.3.76'
 fi
 
 echo -e "${Colour}\n\nAdding the Raspbian Stretch sources.list for MongoDB compatability.\n\n${less}"
@@ -19,9 +20,20 @@ sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo ap
 echo -e "${Colour}\n\nThe UniFi controller with version $version is downloading now.\n\n${less}"
 wget https://dl.ui.com/unifi/$version/unifi_sysvinit_all.deb -O unifi_$version\_sysvinit_all.deb
 
-echo -e "${Colour}\n\nBefore installing the UniFi Controller, it will first install OpenJDK 8 (Java), jsvc and libcommons-daemon-java which are required to install the UniFi controller.\n\n${less}"
-sudo apt install openjdk-8-jre-headless jsvc libcommons-daemon-java -y
-
+echo -e "${Colour}\n\nChecking if Java 11 is required for this version...\n\n${less}"
+if [ "$(printf '%s\n' "$requiredver" "$version" | sort -V | head -n1)" = "$requiredver" ]; 
+ then 
+    echo -e "${Colour}\n\nJava 11 is required. Checking if Java 11 is installed...\n\n${less}"
+ 	if [ $(dpkg-query -W -f='${Status}' openjdk-11-jre-headless 2>/dev/null | grep -c "ok installed") -eq 0 ];
+	then
+		echo -e "${Colour}\n\nJava 11 wasn't found, installing now...\n\n${less}"
+		sudo apt install openjdk-11-jre-headless -y
+	fi	
+ else
+     echo -e "${Colour}\n\nJava 8 is required for the chosen version. Installing now.\n\n${less}"
+     sudo apt install openjdk-8-jre-headless jsvc libcommons-daemon-java -y
+ fi
+ 
 echo -e "${Colour}\n\nMongoDB will now be installed as it's a dependency of UniFi.\n\n${less}"
 sudo apt install mongodb-server mongodb-clients -y
 
@@ -29,11 +41,11 @@ echo -e "${Colour}\n\nThe UniFi controller will be installed now.\n\n${less}"
 sudo dpkg -i unifi_$version\_sysvinit_all.deb; sudo apt install -f -y
 
 if [[ -z "$1" ]] ; then
-echo -e "${Colour}\n\nPi-hole will be installed now.\nThe initial configuration is interactive.\n\n${less}"
-curl -sSL https://install.pi-hole.net | bash
+	echo -e "${Colour}\n\nPi-hole will be installed now.\nThe initial configuration is interactive.\n\n${less}"
+	curl -sSL https://install.pi-hole.net | bash
 
-echo -e "${Colour}\n\nOne more step is changing the password for the web interface of the Pi-hole.\n\n${less}"
-pihole -a -p
+	echo -e "${Colour}\n\nOne more step is changing the password for the web interface of the Pi-hole.\n\n${less}"
+	pihole -a -p
 fi
 
 echo -e "${Colour}\n\nTo finish the installation, a reboot is required. Starting a reboot in 3 seconds.\n\n${less}"
