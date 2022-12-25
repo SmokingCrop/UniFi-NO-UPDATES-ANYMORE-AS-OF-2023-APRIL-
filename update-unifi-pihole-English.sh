@@ -5,7 +5,7 @@ less='\033[0m'
 requiredver='7.3.76'
 
 echo -e "${Colour}By using this script you will UPGRADE your system, the UniFi Controller and Pi-hole.\n${less}"
-read -p "Please enter the STABLE version (e.g: 7.2.95) or press enter for version 7.3.76: " version
+read -p "Please enter a STABLE version of your choice (e.g: 7.2.95) or press enter for the latest stable version 7.3.76: " version
 
 if [[ -z "$version" ]]; then
 	version='7.3.76'
