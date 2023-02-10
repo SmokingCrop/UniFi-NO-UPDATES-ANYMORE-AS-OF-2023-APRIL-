@@ -5,10 +5,10 @@ less='\033[0m'
 requiredver='7.3.76'
 
 echo -e "${Colour}By using this script you will UPGRADE your system, the UniFi Controller and Pi-hole.\n${less}"
-read -p "Please enter a STABLE version of your choice (e.g: 7.2.95) or press enter for the latest stable version 7.3.76: " version
+read -p "Please enter a STABLE version of your choice (e.g: 7.3.76) or press enter for the latest stable version 7.3.83: " version
 
 if [[ -z "$version" ]]; then
-	version='7.3.76'
+	version='7.3.83'
 fi
 echo -e "${Colour}\n\nThe system will now upgrade all the software and firmware, as well as clean up old/unused packages.\n\n${less}"
 sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt-get autoclean -y
