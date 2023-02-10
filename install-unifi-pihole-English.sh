@@ -2,13 +2,13 @@
 
 Colour='\033[1;31m'
 less='\033[0m'
-requiredver='7.3.76'
+requiredver='7.3.83'
 
 echo -e "${Colour}By using this script, you'll update the system, install the stable UniFi controller of your choice and install Pi-hole.\nUse CTRL+C to cancel the script\n\n${less}"
-read -p "Please enter a STABLE version of your choice (e.g: 7.2.95) or press enter for the latest stable version 7.3.76: " version
+read -p "Please enter a STABLE version of your choice (e.g: 7.3.76) or press enter for the latest stable version 7.3.83: " version
 
 if [[ -z "$version" ]]; then
-	version='7.3.76'
+	version='7.3.83'
 fi
 
 echo -e "${Colour}\n\nAdding the Raspbian Stretch sources.list for MongoDB compatability.\n\n${less}"
