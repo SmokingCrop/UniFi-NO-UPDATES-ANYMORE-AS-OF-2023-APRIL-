@@ -12,7 +12,7 @@ if [[ -z "$version" ]]; then
 fi
 
 echo -e "${Colour}\n\nMaking sure the Pi will not run 64 bit kernel..\n\n${less}"
-echo "arm_64bit=0" >> /boot/config.txt
+sudo sh -c 'echo "arm_64bit=0" >> /boot/config.txt'
 
 echo -e "${Colour}\n\nAdding the Raspbian Stretch sources.list for MongoDB compatability.\n\n${less}"
 echo 'deb http://archive.raspbian.org/raspbian stretch main contrib non-free rpi' | sudo tee /etc/apt/sources.list.d/raspbian_stretch_for_mongodb.list
