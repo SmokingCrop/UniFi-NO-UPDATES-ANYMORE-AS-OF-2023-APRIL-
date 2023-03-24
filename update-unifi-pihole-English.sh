@@ -13,7 +13,7 @@ fi
 
 echo -e "${Colour}\n\nMaking sure the Pi will not run 64 bit kernel..\n\n${less}"
 if ! grep -q "arm_64bit=0" /boot/config.txt ; then
-    echo "arm_64bit=0" >> /boot/config.txt
+    sudo sh -c 'echo "arm_64bit=0" >> /boot/config.txt'
 fi
 
 echo -e "${Colour}\n\nThe system will now upgrade all the software and firmware, as well as clean up old/unused packages.\n\n${less}"
