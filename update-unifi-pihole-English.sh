@@ -51,3 +51,6 @@ if hash pihole 2>/dev/null; then
 	echo -e "${Colour}\n\nPi-hole will now be upgraded.\n\n${less}"
         pihole -up
 fi
+
+echo -e "${Colour}\n\nRebooting the Raspberry Pi.\n\n${less}"
+sudo reboot now
