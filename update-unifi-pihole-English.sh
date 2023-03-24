@@ -10,6 +10,12 @@ read -p "Please enter a STABLE version of your choice (e.g: 7.3.76) or press ent
 if [[ -z "$version" ]]; then
 	version='7.3.83'
 fi
+
+echo -e "${Colour}\n\nMaking sure the Pi will not run 64 bit kernel..\n\n${less}"
+if ! grep -q "arm_64bit=0" /boot/config.txt ; then
+    echo "arm_64bit=0" >> /boot/config.txt
+fi
+
 echo -e "${Colour}\n\nThe system will now upgrade all the software and firmware, as well as clean up old/unused packages.\n\n${less}"
 sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt-get autoclean -y
 
