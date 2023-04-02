@@ -5,6 +5,8 @@ less='\033[0m'
 requiredver='7.3.83'
 
 echo -e "${Colour}THIS NO LONGER WORKS ON A FULLY UPDATED RASPBERRY PI 4. Please try this script instead: https://community.ui.com/questions/UniFi-Installation-Scripts-or-UniFi-Easy-Update-Script-or-UniFi-Lets-Encrypt-or-UniFi-Easy-Encrypt-/ccbc7530-dd61-40a7-82ec-22b17f027776?page=1\n\n${less}"
+echo -e "${Colour}THE SCRIPT WILL NO LONGER RECEIVE UPDATES. IT MAY NO LONGER WORK WITH A NEW UPDATE. PLEASE TRY TO USE THE SCRIPT IN THE LINK ABOVE.\n\n${less}"
+
 
 echo -e "${Colour}By using this script, you'll update the system, install the stable UniFi controller of your choice and install Pi-hole.\nUse CTRL+C to cancel the script\n\n${less}"
 read -p "Please enter a STABLE version of your choice (e.g: 7.3.76) or press enter for the latest stable version 7.3.83: " version
